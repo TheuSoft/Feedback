@@ -26,11 +26,11 @@ O **Sistema de Feedback para Produtos** é uma aplicação web que permite aos u
 
 ### Tela Principal
 
-![Sistema de Feedback](https://via.placeholder.com/800x400?text=Sistema+de+Feedback+-+Tela+Principal)
+![Sistema de Feedback](https://i.postimg.cc/mkx5bgyT/Captura-de-tela-2025-09-18-132227.png)
 
 ### Sistema de Avaliação por Estrelas
 
-![Rating System](https://via.placeholder.com/600x300?text=Sistema+de+Rating+com+Estrelas)
+![Rating System](https://i.postimg.cc/gjvBrbg8/Captura-de-tela-2025-09-18-132240.png)
 
 ## 🛠️ Tecnologias Utilizadas
 

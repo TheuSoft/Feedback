@@ -31,7 +31,7 @@ class BaseTemplate implements ITemplate {
         ?>
                 </div>
                 <div class="footer">
-                    <p>&copy; 2025 Aplicativo de Feedback para Produtos - Desenvolvido em PHP MVC</p>
+                    <p>&copy; 2025 Aplicativo de Feedback para Produtos - Ana Clara e Matheus Carvalho </p>
                 </div>
             </div>
             
