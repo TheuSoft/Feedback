@@ -278,7 +278,9 @@ define('ERROR_REPORTING', true);  // Exibir erros
 ⭐ **Se este projeto te ajudou, deixe uma estrela no repositório!**
 
 <div align="center">
-  <img src="https://via.placeholder.com/100x100?text=⭐" alt="Star"/>
+  <a href="https://github.com/TheuSoft/Feedback/stargazers" target="_blank">
+    <img src="https://img.shields.io/github/stars/TheuSoft/Feedback?style=social" alt="GitHub Star"/>
+  </a>
   <br>
   <strong>Feito com ❤️ por TheuSoft e 4N4CL4RA</strong>
 </div>
