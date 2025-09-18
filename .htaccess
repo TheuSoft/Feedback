@@ -1,0 +1,14 @@
+RewriteEngine On
+# Ativa o módulo de reescrita (URL rewriting) no Apache
+
+RewriteCond %{REQUEST_FILENAME} !-f
+# Condição 1: se o arquivo requisitado NÃO existir fisicamente no servidor...
+
+RewriteCond %{REQUEST_FILENAME} !-d
+# Condição 2: ...e se o diretório requisitado também NÃO existir...
+
+RewriteRule ^(.*)$ index.php [QSA,L]
+# Então, redireciona toda a requisição para "index.php"
+# ^(.*)$ → captura qualquer URL acessada
+# QSA → mantém parâmetros da query string (ex: ?id=10 continua funcionando)
+# L → indica que essa é a última regra a ser processada se ela for aplicada
