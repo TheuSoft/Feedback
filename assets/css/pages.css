@@ -1,0 +1,62 @@
+/* Estilos específicos para páginas individuais */
+
+/* Estilos da página Home */
+.home-container {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.home-description {
+    font-size: 1.2rem;
+    margin: 20px 0;
+    color: #666;
+}
+
+.home-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.home-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.home-card h3 {
+    color: #667eea;
+    margin-bottom: 15px;
+}
+
+.home-card .btn {
+    margin-top: 15px;
+}
+
+/* Estilos para cabeçalhos de páginas */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+/* Estilos específicos para listagens */
+.listing-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.empty-state {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    font-weight: 500;
+}
