@@ -5,7 +5,7 @@
 
 // Função para inicializar o sistema de rating
 function inicializarRating() {
-  const containers = document.querySelectorAll(".rating");
+  const containers = document.querySelectorAll(".rating:not(.readonly)");
 
   containers.forEach((container) => {
     const estrelas = container.querySelectorAll(".star");

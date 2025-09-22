@@ -52,12 +52,13 @@ function exibirEstrelas($nota) {
                     <td><?= htmlspecialchars($feedback['usuario_nome']) ?></td>
                     <td><?= htmlspecialchars($feedback['produto_nome']) ?></td>
                     <td>
-                        <div class="rating">
+                        <div class="rating readonly">
                             <?= exibirEstrelas($feedback['nota']) ?>
                         </div>
                     </td>
                     <td><?= htmlspecialchars(substr($feedback['comentario'], 0, 50)) ?>...</td>
                     <td>
+                        <button onclick="abrirModal('feedback', <?= $feedback['id'] ?>, '<?= htmlspecialchars(addslashes($feedback['usuario_nome'])) ?>', '<?= htmlspecialchars(addslashes($feedback['produto_nome'])) ?>', <?= $feedback['nota'] ?>, '<?= htmlspecialchars(addslashes($feedback['comentario'])) ?>')" class="btn btn-info">Visualizar</button>
                         <a href="?acao=feedback-editar&id=<?= $feedback['id'] ?>" class="btn btn-warning">Editar</a>
                         <a href="?acao=feedback-excluir&id=<?= $feedback['id'] ?>" 
                            class="btn btn-danger">Excluir</a>
@@ -67,3 +68,20 @@ function exibirEstrelas($nota) {
         </tbody>
     </table>
 <?php endif; ?>
+
+<!-- Modal de Visualização -->
+<div id="modalVisualizacao" class="modal" onclick="fecharModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <div class="modal-header">
+            <h3 id="modalTitulo">Visualizar Feedback</h3>
+            <span class="close" onclick="fecharModal()">&times;</span>
+        </div>
+        <div class="modal-body" id="modalCorpo">
+            <!-- Conteúdo será inserido via JavaScript -->
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" onclick="fecharModal()">Fechar</button>
+            <a id="modalEditar" href="#" class="btn btn-warning">Editar</a>
+        </div>
+    </div>
+</div>

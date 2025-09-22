@@ -37,6 +37,7 @@ if (isset($_SESSION['erro'])) {
                     <td><?= htmlspecialchars($usuario['nome']) ?></td>
                     <td><?= htmlspecialchars($usuario['email']) ?></td>
                     <td>
+                        <button onclick="abrirModal('usuario', <?= $usuario['id'] ?>, '<?= htmlspecialchars(addslashes($usuario['nome'])) ?>', '<?= htmlspecialchars(addslashes($usuario['email'])) ?>')" class="btn btn-info">Visualizar</button>
                         <a href="?acao=usuario-editar&id=<?= $usuario['id'] ?>" class="btn btn-warning">Editar</a>
                         <a href="?acao=usuario-excluir&id=<?= $usuario['id'] ?>" 
                            class="btn btn-danger">Excluir</a>
@@ -46,3 +47,20 @@ if (isset($_SESSION['erro'])) {
         </tbody>
     </table>
 <?php endif; ?>
+
+<!-- Modal de Visualização -->
+<div id="modalVisualizacao" class="modal" onclick="fecharModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <div class="modal-header">
+            <h3 id="modalTitulo">Visualizar Usuário</h3>
+            <span class="close" onclick="fecharModal()">&times;</span>
+        </div>
+        <div class="modal-body" id="modalCorpo">
+            <!-- Conteúdo será inserido via JavaScript -->
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" onclick="fecharModal()">Fechar</button>
+            <a id="modalEditar" href="#" class="btn btn-warning">Editar</a>
+        </div>
+    </div>
+</div>

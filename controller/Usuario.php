@@ -71,6 +71,28 @@ class Usuario extends Controller {
         $this->form();
     }
     
+    public function visualizar() {
+        try {
+            $id = $_GET['id'] ?? null;
+            if (!$id) {
+                throw new Exception("ID do usuário não informado");
+            }
+            
+            $usuario = $this->usuarioService->buscarPorId($id);
+            if (!$usuario) {
+                throw new Exception("Usuário não encontrado");
+            }
+            
+            $this->template->header("Visualizar Usuário");
+            $this->template->render('usuario/visualizar.php', ['usuario' => $usuario]);
+            $this->template->footer();
+        } catch (Exception $e) {
+            $this->template->header("Erro");
+            echo '<div class="alert alert-error">Erro: ' . $e->getMessage() . '</div>';
+            $this->template->footer();
+        }
+    }
+    
     public function excluir() {
         try {
             $id = $_GET['id'] ?? null;

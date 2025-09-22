@@ -72,6 +72,28 @@ class Produto extends Controller {
         $this->form();
     }
     
+    public function visualizar() {
+        try {
+            $id = $_GET['id'] ?? null;
+            if (!$id) {
+                throw new Exception("ID do produto não informado");
+            }
+            
+            $produto = $this->produtoService->buscarPorId($id);
+            if (!$produto) {
+                throw new Exception("Produto não encontrado");
+            }
+            
+            $this->template->header("Visualizar Produto");
+            $this->template->render('produto/visualizar.php', ['produto' => $produto]);
+            $this->template->footer();
+        } catch (Exception $e) {
+            $this->template->header("Erro");
+            echo '<div class="alert alert-error">Erro: ' . $e->getMessage() . '</div>';
+            $this->template->footer();
+        }
+    }
+    
     public function excluir() {
         try {
             $id = $_GET['id'] ?? null;
