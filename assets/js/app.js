@@ -153,25 +153,28 @@ function mostrarNotificacao(mensagem, tipo = "info") {
 
 // Funcionalidades do Modal de Visualização
 function abrirModal(tipo, id, ...dados) {
-  const modal = document.getElementById('modalVisualizacao');
-  const modalTitulo = document.getElementById('modalTitulo');
-  const modalCorpo = document.getElementById('modalCorpo');
-  const modalEditar = document.getElementById('modalEditar');
-  
+  const modal = document.getElementById("modalVisualizacao");
+  const modalTitulo = document.getElementById("modalTitulo");
+  const modalCorpo = document.getElementById("modalCorpo");
+  const modalEditar = document.getElementById("modalEditar");
+  const modalExcluir = document.getElementById("modalExcluir");
+
   // Mover o modal para o final do body para garantir z-index
   if (modal.parentNode !== document.body) {
     document.body.appendChild(modal);
   }
-  
-  let conteudo = '';
-  let tituloModal = '';
-  let urlEditar = '';
-  
-  switch(tipo) {
-    case 'produto':
+
+  let conteudo = "";
+  let tituloModal = "";
+  let urlEditar = "";
+  let urlExcluir = "";
+
+  switch (tipo) {
+    case "produto":
       const [nome, descricao, preco] = dados;
-      tituloModal = 'Visualizar Produto';
+      tituloModal = "Visualizar Produto";
       urlEditar = `?acao=produto-editar&id=${id}`;
+      urlExcluir = `?acao=produto-excluir&id=${id}`;
       conteudo = `
         <div class="modal-field">
           <label>ID:</label>
@@ -183,7 +186,10 @@ function abrirModal(tipo, id, ...dados) {
         </div>
         <div class="modal-field">
           <label>Descrição:</label>
-          <div class="modal-value modal-text">${descricao.replace(/\n/g, '<br>')}</div>
+          <div class="modal-value modal-text">${descricao.replace(
+            /\n/g,
+            "<br>"
+          )}</div>
         </div>
         <div class="modal-field">
           <label>Preço:</label>
@@ -191,11 +197,12 @@ function abrirModal(tipo, id, ...dados) {
         </div>
       `;
       break;
-      
-    case 'usuario':
+
+    case "usuario":
       const [nomeUsuario, email] = dados;
-      tituloModal = 'Visualizar Usuário';
+      tituloModal = "Visualizar Usuário";
       urlEditar = `?acao=usuario-editar&id=${id}`;
+      urlExcluir = `?acao=usuario-excluir&id=${id}`;
       conteudo = `
         <div class="modal-field">
           <label>ID:</label>
@@ -211,14 +218,15 @@ function abrirModal(tipo, id, ...dados) {
         </div>
       `;
       break;
-      
-    case 'feedback':
+
+    case "feedback":
       const [usuario, produto, nota, comentario] = dados;
-      tituloModal = 'Visualizar Feedback';
+      tituloModal = "Visualizar Feedback";
       urlEditar = `?acao=feedback-editar&id=${id}`;
-      
+      urlExcluir = `?acao=feedback-excluir&id=${id}`;
+
       // Gerar estrelas
-      let estrelas = '';
+      let estrelas = "";
       for (let i = 1; i <= 5; i++) {
         if (i <= nota) {
           estrelas += '<span class="star filled">★</span>';
@@ -226,7 +234,7 @@ function abrirModal(tipo, id, ...dados) {
           estrelas += '<span class="star">★</span>';
         }
       }
-      
+
       conteudo = `
         <div class="modal-field">
           <label>ID:</label>
@@ -249,69 +257,77 @@ function abrirModal(tipo, id, ...dados) {
         </div>
         <div class="modal-field">
           <label>Comentário:</label>
-          <div class="modal-value modal-text">${comentario.replace(/\n/g, '<br>')}</div>
+          <div class="modal-value modal-text">${comentario.replace(
+            /\n/g,
+            "<br>"
+          )}</div>
         </div>
       `;
       break;
   }
-  
+
   modalTitulo.textContent = tituloModal;
   modalCorpo.innerHTML = conteudo;
   modalEditar.href = urlEditar;
-  
+  modalExcluir.href = urlExcluir;
+
   // ESCONDER COMPLETAMENTE TODOS OS ELEMENTOS EXCETO O MODAL
   const bodyChildren = Array.from(document.body.children);
-  bodyChildren.forEach(element => {
-    if (element.id !== 'modalVisualizacao') {
-      element.style.display = 'none';
+  bodyChildren.forEach((element) => {
+    if (element.id !== "modalVisualizacao") {
+      element.style.display = "none";
     }
   });
-  
+
   // Mostrar o modal com máxima prioridade
-  modal.style.display = 'flex';
-  modal.style.zIndex = '999999999';
-  modal.style.position = 'fixed';
-  modal.style.top = '0';
-  modal.style.left = '0';
-  modal.style.width = '100vw';
-  modal.style.height = '100vh';
-  modal.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
-  
+  modal.style.display = "flex";
+  modal.style.zIndex = "999999999";
+  modal.style.position = "fixed";
+  modal.style.top = "0";
+  modal.style.left = "0";
+  modal.style.width = "100vw";
+  modal.style.height = "100vh";
+  modal.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+
   // Previne scroll da página
-  document.body.style.overflow = 'hidden';
-  document.body.classList.add('modal-open');
-  
+  document.body.style.overflow = "hidden";
+  document.body.classList.add("modal-open");
+
   // Força foco no modal para acessibilidade
   modal.focus();
 }
 
 function fecharModal(event) {
-  const modal = document.getElementById('modalVisualizacao');
-  
+  const modal = document.getElementById("modalVisualizacao");
+
   // Se o evento for do clique no overlay ou no botão fechar
-  if (!event || event.target === modal || event.target.classList.contains('close')) {
+  if (
+    !event ||
+    event.target === modal ||
+    event.target.classList.contains("close")
+  ) {
     // Esconder modal
-    modal.style.display = 'none';
-    
+    modal.style.display = "none";
+
     // RESTAURAR TODOS OS ELEMENTOS
     const bodyChildren = Array.from(document.body.children);
-    bodyChildren.forEach(element => {
-      if (element.id !== 'modalVisualizacao') {
-        element.style.display = '';
+    bodyChildren.forEach((element) => {
+      if (element.id !== "modalVisualizacao") {
+        element.style.display = "";
       }
     });
-    
+
     // Restaurar scroll e classes
-    document.body.style.overflow = '';
-    document.body.classList.remove('modal-open');
+    document.body.style.overflow = "";
+    document.body.classList.remove("modal-open");
   }
 }
 
 // Fechar modal com tecla ESC
-document.addEventListener('keydown', function(event) {
-  if (event.key === 'Escape') {
-    const modal = document.getElementById('modalVisualizacao');
-    if (modal && modal.style.display === 'flex') {
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
+    const modal = document.getElementById("modalVisualizacao");
+    if (modal && modal.style.display === "flex") {
       fecharModal();
     }
   }

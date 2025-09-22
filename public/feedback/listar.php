@@ -58,10 +58,7 @@ function exibirEstrelas($nota) {
                     </td>
                     <td><?= htmlspecialchars(substr($feedback['comentario'], 0, 50)) ?>...</td>
                     <td>
-                        <button onclick="abrirModal('feedback', <?= $feedback['id'] ?>, '<?= htmlspecialchars(addslashes($feedback['usuario_nome'])) ?>', '<?= htmlspecialchars(addslashes($feedback['produto_nome'])) ?>', <?= $feedback['nota'] ?>, '<?= htmlspecialchars(addslashes($feedback['comentario'])) ?>')" class="btn btn-info">Visualizar</button>
-                        <a href="?acao=feedback-editar&id=<?= $feedback['id'] ?>" class="btn btn-warning">Editar</a>
-                        <a href="?acao=feedback-excluir&id=<?= $feedback['id'] ?>" 
-                           class="btn btn-danger">Excluir</a>
+                        <button onclick="abrirModal('feedback', <?= $feedback['id'] ?>, '<?= htmlspecialchars(addslashes($feedback['usuario_nome'])) ?>', '<?= htmlspecialchars(addslashes($feedback['produto_nome'])) ?>', <?= $feedback['nota'] ?>, '<?= htmlspecialchars(addslashes($feedback['comentario'])) ?>')" class="btn btn-primary">Visualizar</button>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -82,6 +79,7 @@ function exibirEstrelas($nota) {
         <div class="modal-footer">
             <button class="btn btn-secondary" onclick="fecharModal()">Fechar</button>
             <a id="modalEditar" href="#" class="btn btn-warning">Editar</a>
+            <a id="modalExcluir" href="#" class="btn btn-danger" onclick="return confirmarExclusao('feedback')">Excluir</a>
         </div>
     </div>
 </div>

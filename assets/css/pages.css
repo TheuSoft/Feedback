@@ -2,72 +2,72 @@
 
 /* Estilos da página Home */
 .home-container {
-    text-align: center;
-    padding: var(--space-2xl) 0;
+  text-align: center;
+  padding: var(--space-2xl) 0;
 }
 
 .home-description {
-    font-size: 1.125rem;
-    margin: var(--space-xl) 0;
-    color: var(--text-secondary);
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.7;
+  font-size: 1.125rem;
+  margin: var(--space-xl) 0;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
 }
 
 .home-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: var(--space-xl);
-    margin-top: var(--space-2xl);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-xl);
+  margin-top: var(--space-2xl);
 }
 
 .home-card {
-    background: var(--surface-primary);
-    padding: var(--space-2xl);
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-lg);
-    border: 1px solid var(--primary-200);
-    transition: all 0.2s ease;
+  background: var(--surface-primary);
+  padding: var(--space-2xl);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--primary-200);
+  transition: all 0.2s ease;
 }
 
 .home-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-xl);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
 }
 
 .home-card h3 {
-    color: var(--text-primary);
-    margin-bottom: var(--space-lg);
-    font-size: 1.25rem;
-    font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-lg);
+  font-size: 1.25rem;
+  font-weight: 600;
 }
 
 .home-card p {
-    color: var(--text-secondary);
-    margin-bottom: var(--space-lg);
-    line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-lg);
+  line-height: 1.6;
 }
 
 .home-card .btn {
-    margin-top: var(--space-lg);
-    width: 100%;
+  margin-top: var(--space-lg);
+  width: 100%;
 }
 
 /* Responsividade para home */
 @media (max-width: 768px) {
-    .home-container {
-        padding: var(--space-xl) 0;
-    }
-    
-    .home-grid {
-        grid-template-columns: 1fr;
-        gap: var(--space-lg);
-        margin-top: var(--space-xl);
-    }
-    
-    .home-card {
-        padding: var(--space-xl);
-    }
+  .home-container {
+    padding: var(--space-xl) 0;
+  }
+
+  .home-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    margin-top: var(--space-xl);
+  }
+
+  .home-card {
+    padding: var(--space-xl);
+  }
 }

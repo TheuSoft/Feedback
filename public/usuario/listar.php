@@ -37,10 +37,7 @@ if (isset($_SESSION['erro'])) {
                     <td><?= htmlspecialchars($usuario['nome']) ?></td>
                     <td><?= htmlspecialchars($usuario['email']) ?></td>
                     <td>
-                        <button onclick="abrirModal('usuario', <?= $usuario['id'] ?>, '<?= htmlspecialchars(addslashes($usuario['nome'])) ?>', '<?= htmlspecialchars(addslashes($usuario['email'])) ?>')" class="btn btn-info">Visualizar</button>
-                        <a href="?acao=usuario-editar&id=<?= $usuario['id'] ?>" class="btn btn-warning">Editar</a>
-                        <a href="?acao=usuario-excluir&id=<?= $usuario['id'] ?>" 
-                           class="btn btn-danger">Excluir</a>
+                        <button onclick="abrirModal('usuario', <?= $usuario['id'] ?>, '<?= htmlspecialchars(addslashes($usuario['nome'])) ?>', '<?= htmlspecialchars(addslashes($usuario['email'])) ?>')" class="btn btn-primary">Visualizar</button>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -61,6 +58,7 @@ if (isset($_SESSION['erro'])) {
         <div class="modal-footer">
             <button class="btn btn-secondary" onclick="fecharModal()">Fechar</button>
             <a id="modalEditar" href="#" class="btn btn-warning">Editar</a>
+            <a id="modalExcluir" href="#" class="btn btn-danger" onclick="return confirmarExclusao('usuário')">Excluir</a>
         </div>
     </div>
 </div>

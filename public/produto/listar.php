@@ -39,10 +39,7 @@ if (isset($_SESSION['erro'])) {
                     <td><?= htmlspecialchars(substr($produto['descricao'], 0, 50)) ?>...</td>
                     <td>R$ <?= number_format($produto['preco'], 2, ',', '.') ?></td>
                     <td>
-                        <button onclick="abrirModal('produto', <?= $produto['id'] ?>, '<?= htmlspecialchars(addslashes($produto['nome'])) ?>', '<?= htmlspecialchars(addslashes($produto['descricao'])) ?>', 'R$ <?= number_format($produto['preco'], 2, ',', '.') ?>')" class="btn btn-info">Visualizar</button>
-                        <a href="?acao=produto-editar&id=<?= $produto['id'] ?>" class="btn btn-warning">Editar</a>
-                        <a href="?acao=produto-excluir&id=<?= $produto['id'] ?>" 
-                           class="btn btn-danger">Excluir</a>
+                        <button onclick="abrirModal('produto', <?= $produto['id'] ?>, '<?= htmlspecialchars(addslashes($produto['nome'])) ?>', '<?= htmlspecialchars(addslashes($produto['descricao'])) ?>', 'R$ <?= number_format($produto['preco'], 2, ',', '.') ?>')" class="btn btn-primary">Visualizar</button>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -63,6 +60,7 @@ if (isset($_SESSION['erro'])) {
         <div class="modal-footer">
             <button class="btn btn-secondary" onclick="fecharModal()">Fechar</button>
             <a id="modalEditar" href="#" class="btn btn-warning">Editar</a>
+            <a id="modalExcluir" href="#" class="btn btn-danger" onclick="return confirmarExclusao('produto')">Excluir</a>
         </div>
     </div>
 </div>
