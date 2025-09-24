@@ -1,89 +1,46 @@
 <?php
 session_start();
 require_once __DIR__ . '/config.php';
-require_once __DIR__ . '/generic/Autoload.php';
+include "generic/Autoload.php";
+
+use generic\Controller;
 
 // Ativar autoload
 Autoload::ativar();
 
 // Verificar se tem uma ação na URL
-$acao = $_GET['acao'] ?? 'home';
-
-// Roteamento básico
-switch ($acao) {
-    case 'home':
+if (isset($_GET["acao"])) {
+    $param = $_GET["acao"];
+    
+    // Caso especial para home
+    if ($param === 'home') {
         include_once __DIR__ . '/public/home.php';
-        break;
+        exit;
+    }
     
-    // Produtos
-    case 'produto':
-        $controller = new Produto();
-        $controller->listar();
-        break;
-    case 'produto-form':
-        $controller = new Produto();
-        $controller->form();
-        break;
-    case 'produto-salvar':
-        $controller = new Produto();
-        $controller->salvar();
-        break;
-    case 'produto-editar':
-        $controller = new Produto();
-        $controller->editar();
-        break;
-    case 'produto-excluir':
-        $controller = new Produto();
-        $controller->excluir();
-        break;
+    // Determinar o controller baseado no parâmetro
+    $controllerName = null;
     
-    // Usuários
-    case 'usuario':
-        $controller = new Usuario();
-        $controller->listar();
-        break;
-    case 'usuario-form':
-        $controller = new Usuario();
-        $controller->form();
-        break;
-    case 'usuario-salvar':
-        $controller = new Usuario();
-        $controller->salvar();
-        break;
-    case 'usuario-editar':
-        $controller = new Usuario();
-        $controller->editar();
-        break;
-    case 'usuario-excluir':
-        $controller = new Usuario();
-        $controller->excluir();
-        break;
+    // Identificar o tipo de controller pelo prefixo
+    if (strpos($param, 'produto') === 0) {
+        $controllerName = 'Produto';
+    } elseif (strpos($param, 'usuario') === 0) {
+        $controllerName = 'Usuario';
+    } elseif (strpos($param, 'feedback') === 0) {
+        $controllerName = 'Feedback';
+    }
     
-    // Feedback
-    case 'feedback':
-        $controller = new Feedback();
-        $controller->listar();
-        break;
-    case 'feedback-form':
-        $controller = new Feedback();
-        $controller->form();
-        break;
-    case 'feedback-salvar':
-        $controller = new Feedback();
-        $controller->salvar();
-        break;
-    case 'feedback-editar':
-        $controller = new Feedback();
-        $controller->editar();
-        break;
-    case 'feedback-excluir':
-        $controller = new Feedback();
-        $controller->excluir();
-        break;
-    
-    default:
+    // Se encontrou um controller válido, instancia e executa
+    if ($controllerName && class_exists($controllerName)) {
+        $controller = new $controllerName();
+        $controller->verificarChamadas($param);
+    } else {
+        // Página não encontrada
         http_response_code(404);
         echo "<h1>Página não encontrada</h1>";
-        break;
+    }
+} else {
+    // Sem parâmetro, vai para home
+    include_once __DIR__ . '/public/home.php';
 }
 ?>
