@@ -1,9 +1,7 @@
 <?php
 session_start();
-require_once __DIR__ . '/config.php';
-include "generic/Autoload.php";
-
-use generic\Controller;
+require_once __DIR__ . '/config/config.php';
+include "lib/Autoload.php";
 
 // Ativar autoload
 Autoload::ativar();
@@ -14,7 +12,7 @@ if (isset($_GET["acao"])) {
     
     // Caso especial para home
     if ($param === 'home') {
-        include_once __DIR__ . '/public/home.php';
+        include_once __DIR__ . '/view/public/home.php';
         exit;
     }
     
@@ -41,6 +39,6 @@ if (isset($_GET["acao"])) {
     }
 } else {
     // Sem parâmetro, vai para home
-    include_once __DIR__ . '/public/home.php';
+    include_once __DIR__ . '/view/public/home.php';
 }
 ?>

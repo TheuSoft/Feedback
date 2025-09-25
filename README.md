@@ -27,11 +27,11 @@ O **Sistema de Gestão de Feedback** é uma plataforma web completa que oferece 
 
 ### Tela Principal
 
-![Sistema de Feedback](https://i.postimg.cc/mkx5bgyT/Captura-de-tela-2025-09-18-132227.png)
+![Sistema de Feedback](https://i.postimg.cc/Bnn71nYp/Captura-de-tela-2025-09-25-134454.png)
 
 ### Sistema de Avaliação por Estrelas
 
-![Rating System](https://i.postimg.cc/gjvBrbg8/Captura-de-tela-2025-09-18-132240.png)
+![Rating System](https://i.postimg.cc/52tYchyj/Captura-de-tela-2025-09-25-134904.png)
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -52,65 +52,95 @@ O **Sistema de Gestão de Feedback** é uma plataforma web completa que oferece 
 
 ### Recursos Especiais
 
-- **Autoload PSR-4** - Carregamento automático de classes
-- **Singleton Pattern** - Gerenciamento eficiente de conexões
-- **Template System** - Sistema de templates reutilizável
+- **Arquitetura MVC Enterprise** - Separação rigorosa de responsabilidades
+- **Padrões de Projeto Avançados** - Singleton, DAO, Factory e Template Method
+- **Autoload PSR-4** - Carregamento automático seguindo padrões modernos
+- **Sistema de Interfaces** - Contratos bem definidos para flexibilidade e manutenibilidade
+- **Template System Reutilizável** - Layouts consistentes e manuteníveis
 - **Prepared Statements** - Segurança avançada contra SQL Injection
-- **Modal System** - Interface moderna com modais responsivos
-- **Design System** - Paleta de cores consistente e componentes padronizados
+- **Modal System Responsivo** - Interface moderna com UX otimizada
+- **Design System Profissional** - Paleta consistente e componentes padronizados
 
 ## 📁 Estrutura do Projeto
 
+### 🏗️ Arquitetura MVC Enterprise
+
 ```
 Feedback/
-├── 📁 assets/                  # Recursos estáticos
-│   ├── 📁 css/
-│   │   ├── style.css          # Estilos principais
-│   │   └── pages.css          # Estilos específicos
-│   └── 📁 js/
-│       ├── app.js             # JavaScript principal
-│       └── rating.js          # Sistema de estrelas
-├── 📁 controller/             # Controladores MVC
-│   ├── Feedback.php           # Controller de feedback
-│   ├── Produto.php            # Controller de produtos
-│   └── Usuario.php            # Controller de usuários
-├── 📁 dao/                    # Camada de Acesso a Dados
-│   ├── 📁 mysql/
-│   │   ├── FeedbackDAO.php    # DAO de feedback
-│   │   ├── ProdutoDAO.php     # DAO de produtos
-│   │   └── UsuarioDAO.php     # DAO de usuários
-│   ├── IFeedbackDAO.php       # Interface feedback
-│   ├── IProdutoDAO.php        # Interface produtos
-│   └── IUsuarioDAO.php        # Interface usuários
-├── 📁 generic/                # Classes genéricas
-│   ├── Acao.php               # Classe base para ações
-│   ├── Autoload.php           # Sistema de autoload
-│   ├── Controller.php         # Controller base
-│   ├── MysqlFactory.php       # Factory de conexão
-│   └── MysqlSingleton.php     # Singleton do MySQL
-├── 📁 public/                 # Views/Páginas públicas
-│   ├── 📁 feedback/
-│   │   ├── form.php           # Formulário de feedback
-│   │   └── listar.php         # Listagem de feedbacks
-│   ├── 📁 produto/
-│   │   ├── form.php           # Formulário de produtos
-│   │   └── listar.php         # Listagem de produtos
-│   ├── 📁 usuario/
-│   │   ├── form.php           # Formulário de usuários
-│   │   └── listar.php         # Listagem de usuários
-│   └── home.php               # Página inicial
-├── 📁 service/                # Regras de negócio
-│   ├── FeedbackService.php    # Serviços de feedback
-│   ├── ProdutoService.php     # Serviços de produtos
-│   └── UsuarioService.php     # Serviços de usuários
-├── 📁 template/               # Sistema de templates
-│   ├── BaseTemplate.php       # Template base
-│   └── ITemplate.php          # Interface de template
-├── .htaccess                  # Configurações Apache
-├── config.php                 # Configurações do sistema
-├── database.sql               # Script de criação do banco
-└── index.php                  # Arquivo principal
+├── 📁 config/                 # ⚙️ Configurações Centralizadas
+│   ├── config.php            # Configurações do sistema e banco
+│   └── database.sql          # Script de criação do banco
+│
+├── 📁 lib/                   # 📚 Bibliotecas e Utilitários
+│   └── Autoload.php          # Sistema de carregamento automático PSR-4
+│
+├── 📁 controller/            # 🎮 Camada de Controle (MVC)
+│   ├── Acao.php              # Classe base abstrata para controllers
+│   ├── BaseController.php     # Controller base com template system
+│   ├── Usuario.php           # Controller de gestão de usuários
+│   ├── Produto.php           # Controller de gestão de produtos
+│   └── Feedback.php          # Controller de gestão de feedback
+│
+├── 📁 model/                 # 🧠 Camada de Modelo (MVC)
+│   ├── 📁 dao/               # Data Access Objects
+│   │   ├── IUsuarioDAO.php   # Interface de usuários
+│   │   ├── IProdutoDAO.php   # Interface de produtos
+│   │   ├── IFeedbackDAO.php  # Interface de feedback
+│   │   └── 📁 mysql/         # Implementação MySQL
+│   │       ├── UsuarioDAO.php     # DAO de usuários
+│   │       ├── ProdutoDAO.php     # DAO de produtos
+│   │       └── FeedbackDAO.php    # DAO de feedback
+│   │
+│   ├── 📁 database/          # Infraestrutura de Dados
+│   │   ├── MysqlSingleton.php     # Singleton para conexão única
+│   │   └── MysqlFactory.php       # Factory para criação de conexões
+│   │
+│   └── 📁 service/           # Regras de Negócio
+│       ├── UsuarioService.php     # Lógica de negócio de usuários
+│       ├── ProdutoService.php     # Lógica de negócio de produtos
+│       └── FeedbackService.php    # Lógica de negócio de feedback
+│
+├── 📁 view/                  # 🎨 Camada de Apresentação (MVC)
+│   ├── 📁 assets/            # Recursos Estáticos
+│   │   ├── 📁 css/
+│   │   │   ├── style.css     # Estilos principais e design system
+│   │   │   └── pages.css     # Estilos específicos de páginas
+│   │   └── 📁 js/
+│   │       ├── app.js        # JavaScript principal e modais
+│   │       └── rating.js     # Sistema interativo de estrelas
+│   │
+│   ├── 📁 public/            # Páginas Públicas
+│   │   ├── home.php          # Dashboard principal
+│   │   ├── 📁 usuario/
+│   │   │   ├── form.php      # Formulário de cadastro/edição
+│   │   │   ├── listar.php    # Listagem com tabelas responsivas
+│   │   │   └── visualizar.php # Detalhes em modal
+│   │   ├── 📁 produto/
+│   │   │   ├── form.php      # Formulário com validação de preço
+│   │   │   ├── listar.php    # Catálogo de produtos
+│   │   │   └── visualizar.php # Preview com modal
+│   │   └── 📁 feedback/
+│   │       ├── form.php      # Formulário com rating estrelas
+│   │       ├── listar.php    # Feed de avaliações
+│   │       └── visualizar.php # Detalhes do feedback
+│   │
+│   └── 📁 template/          # Sistema de Templates
+│       ├── ITemplate.php     # Interface para templates
+│       └── BaseTemplate.php  # Template base reutilizável
+│
+├── .htaccess                 # Configurações de roteamento Apache
+├── index.php                 # 🚀 Ponto de entrada e roteador
+└── README.md                 # Documentação completa
 ```
+
+### 🎯 Principais Diferenciais da Estrutura
+
+- **🏢 Padrão Enterprise**: Organização profissional seguindo boas práticas da indústria
+- **📦 Separação de Responsabilidades**: Cada camada tem propósito bem definido
+- **🔄 Reutilização**: Templates, controllers base e interfaces promovem reuso
+- **📈 Escalabilidade**: Estrutura preparada para crescimento e manutenção
+- **🛡️ Padrões de Projeto**: Singleton, DAO, Factory e Template Method implementados
+- **📚 Autoload PSR-4**: Carregamento automático seguindo padrões modernos
 
 ## 🗄️ Estrutura do Banco de Dados
 
@@ -245,11 +275,33 @@ define('ERROR_REPORTING', true);  // Exibir erros
 
 ## 📊 Funcionalidades Técnicas
 
-### Arquitetura MVC
+### 🏗️ Arquitetura MVC Enterprise
 
-- **Model**: Classes DAO e Service para lógica de dados
-- **View**: Templates PHP para apresentação
-- **Controller**: Classes para controle de fluxo
+#### **Model (Camada de Modelo)**
+
+- **📊 DAOs**: Abstração de acesso a dados com interfaces bem definidas
+- **🏢 Services**: Lógica de negócio e regras de validação centralizadas
+- **🔗 Database**: Singleton e Factory para gerenciamento eficiente de conexões
+
+#### **View (Camada de Apresentação)**
+
+- **🎨 Templates**: Sistema reutilizável com layouts consistentes
+- **📱 Assets**: CSS/JS organizados com design system
+- **🖼️ Pages**: Interface responsiva com modais modernos
+
+#### **Controller (Camada de Controle)**
+
+- **🎮 Base Controllers**: Herança com funcionalidades comuns
+- **🔄 Roteamento**: Sistema de URL amigável e RESTful
+- **📤 Responses**: JSON, redirects e renderização de templates
+
+### 🎯 Padrões de Projeto Implementados
+
+- **🔒 Singleton Pattern** - Conexão única e eficiente com banco
+- **🏭 Factory Pattern** - Criação padronizada de objetos de conexão
+- **📋 DAO Pattern** - Abstração completa da camada de dados
+- **📄 Template Method** - Sistema de templates reutilizável
+- **🔌 Interface Segregation** - Contratos bem definidos e flexíveis
 
 ### Segurança
 
