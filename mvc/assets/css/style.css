@@ -1,0 +1,422 @@
+/* ===================================
+   SISTEMA DE FEEDBACK MVC - CSS PRINCIPAL
+   =================================== */
+
+/* Reset e Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+  line-height: 1.6;
+}
+
+/* ===================================
+   LAYOUT PRINCIPAL (Header/Footer)
+   =================================== */
+.header {
+  background: linear-gradient(135deg, #2196f3, #1976d2);
+  color: white;
+  padding: 15px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.8em;
+  display: inline-block;
+  font-weight: 300;
+}
+
+.nav-menu {
+  float: right;
+  margin-top: 5px;
+}
+
+.nav-menu a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.nav-menu a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.content {
+  min-height: calc(100vh - 140px);
+  padding: 30px 20px;
+}
+
+.footer {
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ===================================
+   CONTAINERS DE LISTA
+   =================================== */
+.lista-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  animation: slideUp 0.5s ease;
+}
+
+.lista-header {
+  background: linear-gradient(135deg, #2196f3, #1976d2);
+  color: white;
+  padding: 25px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lista-titulo {
+  margin: 0;
+  font-size: 1.8em;
+  font-weight: 300;
+}
+
+.btn-cadastrar {
+  background: linear-gradient(135deg, #4caf50, #45a049);
+  color: white;
+  padding: 12px 25px;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(76, 175, 80, 0.3);
+}
+
+.btn-cadastrar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+}
+
+/* ===================================
+   TABELAS
+   =================================== */
+.tabela-lista {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+}
+
+.tabela-lista th {
+  background: #f8f9fa;
+  padding: 20px 15px;
+  text-align: left;
+  border-bottom: 2px solid #e9ecef;
+  font-weight: 600;
+  color: #495057;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.9em;
+}
+
+.tabela-lista td {
+  padding: 18px 15px;
+  border-bottom: 1px solid #f1f3f4;
+  vertical-align: middle;
+}
+
+.tabela-lista tr:hover {
+  background: #f8f9fa;
+  transition: background-color 0.2s ease;
+}
+
+.tabela-lista tr:last-child td {
+  border-bottom: none;
+}
+
+/* ===================================
+   BOTÕES DE AÇÃO
+   =================================== */
+.btn-acao {
+  color: #2196f3;
+  text-decoration: none;
+  margin: 0 8px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  font-size: 0.9em;
+}
+
+.btn-acao:hover {
+  background: #e3f2fd;
+  transform: translateY(-1px);
+}
+
+.btn-deletar {
+  color: #f44336;
+}
+
+.btn-deletar:hover {
+  background: #ffebee;
+}
+
+/* ===================================
+   CONTAINERS DE FORMULÁRIO
+   =================================== */
+.form-container {
+  max-width: 700px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  animation: slideUp 0.5s ease;
+}
+
+.form-header {
+  background: linear-gradient(135deg, #2196f3, #1976d2);
+  color: white;
+  padding: 25px 30px;
+  text-align: center;
+}
+
+.form-titulo {
+  margin: 0;
+  font-size: 1.8em;
+  font-weight: 300;
+}
+
+.form-content {
+  padding: 40px;
+}
+
+/* ===================================
+   ELEMENTOS DE FORMULÁRIO
+   =================================== */
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #495057;
+  font-size: 0.95em;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  background-color: #fff;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #2196f3;
+  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+  transform: translateY(-1px);
+}
+
+.form-help {
+  font-size: 0.85em;
+  color: #6c757d;
+  margin-top: 6px;
+  font-style: italic;
+}
+
+/* ===================================
+   BOTÕES DE FORMULÁRIO
+   =================================== */
+.form-actions {
+  text-align: center;
+  padding-top: 30px;
+  border-top: 1px solid #e9ecef;
+}
+
+.btn-submit {
+  background: linear-gradient(135deg, #4caf50, #45a049);
+  color: white;
+  padding: 15px 35px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(76, 175, 80, 0.3);
+  margin-right: 15px;
+}
+
+.btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+}
+
+.btn-cancelar {
+  background: linear-gradient(135deg, #f44336, #d32f2f);
+  color: white;
+  padding: 15px 35px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(244, 67, 54, 0.3);
+}
+
+.btn-cancelar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(244, 67, 54, 0.4);
+}
+
+/* ===================================
+   ELEMENTOS ESPECÍFICOS
+   =================================== */
+.preco {
+  font-weight: 700;
+  color: #4caf50;
+  font-size: 1.1em;
+}
+
+.nota-estrelas {
+  color: #ff9800;
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+.comentario {
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: help;
+}
+
+/* ===================================
+   ANIMAÇÕES
+   =================================== */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ===================================
+   RESPONSIVIDADE
+   =================================== */
+@media (max-width: 768px) {
+  .lista-container,
+  .form-container {
+    margin: 0 10px;
+    border-radius: 8px;
+  }
+
+  .lista-header,
+  .form-header {
+    padding: 20px;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .nav-menu {
+    float: none;
+    text-align: center;
+    margin-top: 15px;
+  }
+
+  .nav-menu a {
+    display: inline-block;
+    margin: 5px;
+  }
+
+  .tabela-lista {
+    font-size: 0.9em;
+  }
+
+  .tabela-lista th,
+  .tabela-lista td {
+    padding: 12px 8px;
+  }
+
+  .form-content {
+    padding: 25px;
+  }
+
+  .btn-submit,
+  .btn-cancelar {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+  }
+}
+
+/* ===================================
+   ESTADOS E FEEDBACK VISUAL
+   =================================== */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.error {
+  border-color: #f44336 !important;
+  box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.1) !important;
+}
+
+.success {
+  border-color: #4caf50 !important;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1) !important;
+}
